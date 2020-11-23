@@ -21,12 +21,6 @@
   font-weight: $large-weight;
 }
 
-@mixin flex-between {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
 @mixin link-text {
   text-transform: uppercase;
   text-decoration: none;
