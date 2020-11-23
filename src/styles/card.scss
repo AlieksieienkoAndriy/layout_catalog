@@ -1,28 +1,36 @@
 @import"mixines";
 @import"variables";
 
-.catalog__card {
-  margin: 0 24px 50px;
-}
-
 .card {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-rows: repeat(6, auto);
+  grid-auto-flow: column;
+  height: 403px;
   width: 200px;
-  padding: 30px 14px 15px;
+  padding: 15px;
   border-radius: 5px;
   border: 1px solid #f3f3f3;
 
   &__photo {
-    height: 134px;
-    width: 160px;
+    padding-top: 15px;
+    height: $img-height;
+    width: $img-width;
+    border: 3px solid transparent;
     align-self: center;
+    box-sizing: content-box;
+    transition: transform 1s;
+
+    &:hover {
+      transform: scale($img-scale);
+      border-color: #f3f3f3;
+    }
   }
 
   &__description {
     @include font-normal;
     margin-top: 45px;
     line-height: 15px;
+    flex-shrink: 0;
   }
 
   &__code {
@@ -30,19 +38,21 @@
   }
 
   &__stars {
-    @include flex-between;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
     margin-top: 15px;
   }
 
   .rang {
-    display: flex;
-  }
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-column-gap: 4px;
 
-  .rang__star {
-    height: 15px;
-    width: 15px;
-    margin-right: 4px;
-    background: url(../images/star.svg) no-repeat center;
+    &__star {
+      height: 15px;
+      width: 15px;
+      background: url(../images/star.svg) no-repeat center;
+    }
   }
 
   @for $i from 1 to 5 {
@@ -53,13 +63,19 @@
     }
   }
 
+  &__vizitors {
+    justify-self: end;
+  }
+
   &__price {
-    @include flex-between;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
     align-items: baseline;
     margin-top: 20px;
   }
 
   &__amount {
+    justify-self: end;
     @include font-large;
     line-height: 19px;
   }
@@ -74,6 +90,7 @@
     color: $color-main;
     line-height: 40px;
     height: 40px;
+    transition: all 1s;
   }
 
   &__link:hover {
